@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>Binance Smartchain Contract (BSCLP.PRO)</title>
+<link rel="shortcut icon" href="/asset/image/common/icon.png" type="image/x-icon">
+<link href="/asset/css/fonts.css" rel="stylesheet">
+<link href="/asset/css/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- ####################################  header  #################################### -->
+<header class="header">
+<div class="logo">
+	<a href="index.html"><img src="/asset/image/common/logo.png" alt="BSCLP PRO"/></a>
+</div>
+<nav class="nav nav--pc">
+<a href="index.html#1">Statistics</a>
+<a href="mining.html">Liquidity mining</a>
+<a href="index.html#3">Binance Chain</a>
+<a href="index.html#4">Partner</a>
+<a href="index.html#5">Help</a>
+</nav>
+<nav class="nav nav--mobile">
+<a href="index.html#1"><strong>Statistics</strong></a>
+<a href="mining.html"><strong>Liquidity mining</strong></a>
+<a href="index.html#3"><strong>Binance Chain</strong></a>
+<a href="index.html#4"><strong>Partner</strong></a>
+<a href="index.html#5"><strong>Help</strong></a>
+<div class="header__bnb header__bnb--mobile" onclick="App.addProduct()">
+	<strong class="account__balance">0.0000</strong> BNB
+</div>
+<a href="#" class="header__wallet--mobile"><strong class="account__address">Connect Wallet</strong></a>
+</nav>
+<div class="header__rightside">
+	<div class="header__bnb">
+		<strong class="account__balance">0.0000</strong> BNB
+	</div>
+	<a href="#" class="header__wallet account__address" onclick="App.initWeb3()">Connect Wallet</a>
+	<button class="header__navtoggler"><span class="material-icons material-icons-outlined">menu</span><span class="sr">MENU</span></button>
+</div>
+</header>
+<!-- ####################################  //header  #################################### -->
+<br>
+<br>
+<br>
+<br>
+<div class="i-visual">
+	<div class="i-visual__wrap">
+		<h2 class="i-visual__text1"><span>A Parallel Binance Chain to Enable Smart Contracts</span></h2>
+		<p class="i-visual__text2">
+			<span>Anyone can freely contribute to the clean exchange ecosystem by participated in the supply of liquidity. his is the core of the protocol growth.</span> <span>The participants can get reasonable compensation based on their contribution by the block mining system. </span>
+		</p>
+		<a class="i-visual__contract">✎ Create a smart contract</a>
+	</div>
+</div>
+<!-- ========== popup ========== -->
+<form class="i-contractpop">
+	<div class="i-contractpop__wrap">
+		<h2 class="i-contractpop__subject">Create a smart contract</h2>
+		<button class="i-contractpop__closer">✕</button>
+		<div class="i-contractpop__agree">
+			<label><input id="agreement" type="checkbox"/><span>I confirm that I have read, understood and agreed <em><a href="Bsclp Community.pdf" target="_blank"><font size="" color="#f0b90b"><u>Disclaimer</u></font></a></em></span></label>
+		</div>
+		<div class="i-contractpop__groups">
+			<div class="i-contractpop__group i-contractpop__group1">
+				<h3 class="i-contractpop__title">Code</h3>
+				<input id="code" type="text" placeholder="Code input" class="i-contractpop__input"/>
+			</div>
+			<div class="i-contractpop__group i-contractpop__group2">
+				<h3 class="i-contractpop__title">E-mail </h3>
+				<input id="email" type="email" placeholder="E-mail input" class="i-contractpop__input"/>
+			</div>
+			<div class="i-contractpop__group i-contractpop__group3">
+				<h3 class="i-contractpop__title">BNB Contract address </h3>
+				<input id="contractAddress" type="text" placeholder="Contract address input" class="i-contractpop__input"/>
+			</div>
+			<button type="button" onclick="App.createContract()" class="i-contractpop__btn">RERUN</button>
+		</div>
+	</form>
+</div>
+<!-- ========== //popup ========== -->
+<main class="i-main">
+<div class="wrap">
+	<!-- ========== Total transaction... ========== -->
+	<div class="i-total" id="1">
+		<div class="i-total__group1">
+			<div class="i-total__group1-subgroup1">
+				<dl class="i-total__set">
+					<dt class="i-total__title">Total transaction</dt>
+					<dd class="i-total__count"><strong class="total">0.0000</strong> BNB</dd>
+				</dl>
+			</div>
+			<div class="i-total__group1-subgroup2">
+				<dl class="i-total__set">
+					<dt class="i-total__title">Total number of transactions</dt>
+					<dd class="i-total__count"><strong class="totalNum">0</strong></dd>
+				</dl>
+			</div>
+		</div>
+		<div class="i-total__group2">
+			<div class="i-total__group2-subgroup1">
+				<div class="i-total__group2-subgroup1-block1">
+					<dl class="i-total__set">
+						<dt class="i-total__title">Total liquidity mining</dt>
+						<dd class="i-total__count"><strong id="user-total">0.0000</strong> BNB</dd>
+					</dl>
+				</div>
+				<div class="i-total__group2-subgroup1-block2">
+					<div class="i-total__group2-subgroup1-block2__link">
+						<input type="text" id="link" value="https://bsclp.pro..."/>
+					</div>
+					<button class="i-total__group2-subgroup1-block2__copy js-copy" data-clipboard-action="copy" data-clipboard-target="#link">Copy</button>
+				</div>
+			</div>
+			<div class="i-total__group2-subgroup2">
+				<div class="i-total__group2-subgroup2-block1">
+					<dl class="i-total__set">
+						<dt class="i-total__title">Completed mining Reward</dt>
+						<dd class="i-total__count"><strong id="user-Completed">0.0000</strong> BNB</dd>
+					</dl>
+				</div>
+				<div class="i-total__group2-subgroup2-block2">
+					<dl class="i-total__set">
+						<dt class="i-total__title">Liquidty mining Reward</dt>
+						<dd class="i-total__count"><strong id="user-mining-Reward">0.0000</strong> BNB</dd>
+					</dl>
+				</div>
+				<div class="i-total__group2-subgroup2-block3">
+					<dl class="i-total__set">
+						<dt class="i-total__title">Recommended mining Reward<span class="material-icons material-icons-outlined">expand_more</span></dt>
+						<dd class="i-total__count"><strong id="intro-reward">0.0000</strong> BNB
+						<ul class="i-total__group2-subgroup2-block3-layer">
+							<li><span>1 Step</span><span id="direct-reward">0.0000</span></li>
+							<li><span>2 Step</span><span id="indirect-reward">0.0000</span></li>
+						</ul>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ========== //Total transaction... ========== -->
+	<!-- ========== Provide liquidity and get mining ========== -->
+	<div class="i-Provide">
+		<h3 class="i-Provide__title">Provide liquidity and get mining</h3>
+		<p class="i-Provide__text">
+			<span>Anyone can freely contribute to the clay exchange ecosystem by participating in the supply of liquidity. This is</span>
+			<span>the core of the protocol's growth. Contributors can get reasonable compensation based on his contribution</span>
+			<span>through the block mining mining system.</span>
+		</p>
+		<a href="#" class="i-Provide__link">BNB - BTC Mining</a>
+	</div>
+	<!-- ========== //Provide liquidity and get mining ========== -->
+	<!-- ========== Liquidity  mining ========== -->
+	<div class="i-liquidity" id="2">
+		<div class="i-title">
+			<h3 class="i-title__title">Liquidity mining</h3>
+		</div>
+		<div class="products" id="product-box">
+          <!-- ----- 1. BNB - BUSD ----- -->
+		<div class="i-liquidity__group">
+			<div class="i-liquidity__group1">
+				<div class="i-liquidity__group1-block1">
+					<img src="/asset/image/common/bnb_busd.png" alt="" class="i-liquidity__icon"/> &nbsp;&nbsp;BNB - BUSD <a href="" target="_blank"><img src="/asset/image/index/liquidity_linker.png" alt="LINK" class="i-liquidity__linker"/></a>
+				</div>
+				<div class="i-liquidity__group1-block2">
+					<span class="count"><strong>0.2000</strong> BNB</span>
+				</div>
+				<div class="i-liquidity__group1-block3">
+					<div class="i-liquidity__today">
+						 Today <span class="count"><strong>0.0000</strong></span>
+					</div>
+					<div class="i-liquidity__total">
+						 Total flow pool <span class="count"><strong>20.0000</strong></span>
+					</div>
+					<div class="i-liquidity__range">
+						<div class="i-liquidity__rangebar" style="left: 1%;">
+							<span class="sr">Data Range</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="i-liquidity__group2">
+				<div class="i-liquidity__group2-block1">
+					<div class="i-liquidity__estimate">
+						 Expected earning annual rate is <br><br> <strong>168~380</strong><span>%</span>
+					</div>
+					<a href="#" class="i-liquidity__start">Liquidity mining</a>
+				</div>
+				<div class="i-liquidity__group2-block2">
+					<ul class="i-liquidity_chart">
+						<li class="i-liquidity_chart-item">
+						<div class="i-liquidity_chart-title">
+							 Liquidity donationn
+						</div>
+						<div class="i-liquidity_chart-data">
+							<strong>0.0000</strong> BNB
+						</div>
+						</li>
+						<li class="i-liquidity_chart-item">
+						<div class="i-liquidity_chart-title">
+							 Completed mining Reward
+						</div>
+						<div class="i-liquidity_chart-data">
+							<strong>0.0000</strong> BNB
+						</div>
+						</li>
+						<li class="i-liquidity_chart-item">
+						<div class="i-liquidity_chart-title">
+							 Expected liquidty mining Reward
+						</div>
+						<div class="i-liquidity_chart-data">
+							<strong>0.0000</strong> BNB
+						</div>
+						</li>
+						<li class="i-liquidity_chart-item">
+						<div class="i-liquidity_chart-title">
+							 Recommended mining Reward 
+						</div>
+						<div class="i-liquidity_chart-data">
+							<strong>0.0000</strong> BNB
+						</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- ----- //1. BNB - BUSD ----- -->
+		<!-- ----- 2. BNB - ETH ---- -->
+		<div class="i-liquidity__group">
+			<div class="i-liquidity__group1">
+				<div class="i-liquidity__group1-block1">
+					<img src="/asset/image/common/bnb_eth.png" alt="" class="i-liquidity__icon"/> &nbsp;&nbsp;BNB - ETH <a href="" target="_blank"><img src="/asset/image/index/liquidity_linker.png" alt="LINK" class="i-liquidity__linker"/></a>
+				</div>
+				<div class="i-liquidity__group1-block2">
+					<span class="count"><strong>0.5000</strong> BNB</span>
+				</div>
+				<div class="i-liquidity__group1-block3">
+					<div class="i-liquidity__group1-today">
+						 Today <span class="count"><strong>0.0000</strong></span>
+					</div>
+					<div class="i-liquidity__total">
+						 Total flow pool <span class="count"><strong>50.0000</strong></span>
+					</div>
+					<div class="i-liquidity__range">
+						<div class="i-liquidity__rangebar" style="left: 1%;">
+							<span class="sr">Data Range</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="i-liquidity__group2">
+				<div class="i-liquidity__group2-block1">
+					<div class="i-liquidity__estimate">
+						 Expected earning annual rate is <br><br> <strong>200~450%</strong>
+					</div>
+					<a href="#" class="i-liquidity__start">Liquidity mining</a>
+				</div>
+				<div class="i-liquidity__group2-block2">
+					<ul class="i-liquidity_chart">
+						<li class="i-liquidity_chart-item">
+						<div class="i-liquidity_chart-title">
+							 Liquidity donationn
+						</div>
+						<div class="i-liquidity_chart-data">
+							<strong>0.0000</strong> BNB
+						</div>
+						</li>
+						<li class="i-liquidity_chart-item">
+						<div class="i-liquidity_chart-title">
+							 Completed mining Reward
+						</div>
+						<div class="i-liquidity_chart-data">
+							<strong>0.0000</strong> BNB
+						</div>
+						</li>
+						<li class="i-liquidity_chart-item">
+						<div class="i-liquidity_chart-title">
+							 Expected liquidty mining Reward
+						</div>
+						<div class="i-liquidity_chart-data">
+							<strong>0.0000</strong> BNB
+						</div>
+						</li>
+						<li class="i-liquidity_chart-item">
+						<div class="i-liquidity_chart-title">
+							 Recommended mining Reward 
+						</div>
+						<div class="i-liquidity_chart-data">
+							<strong>0.0000</strong> BNB
+						</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- ----- //2. BNB - ETH ---- -->
+		<!-- ----- 3. BNB - BTC ---- -->
+		<div class="i-liquidity__group">
+			<div class="i-liquidity__group1">
+				<div class="i-liquidity__group1-block1">
+					<img src="/asset/image/common/bnb_btc.png" alt="" class="i-liquidity__icon"/> &nbsp;&nbsp;BNB - BTC <a href="" target="_blank"><img src="/asset/image/index/liquidity_linker.png" alt="LINK" class="i-liquidity__linker"/></a>
+				</div>
+				<div class="i-liquidity__group1-block2">
+					<span class="count"><strong>1.0000</strong> BNB</span>
+				</div>
+				<div class="i-liquidity__group1-block3">
+					<div class="i-liquidity__today">
+						 Today <span class="count"><strong>0.0000</strong></span>
+					</div>
+					<div class="i-liquidity__total">
+						 Total flow pool <span class="count"><strong>100.0000</strong></span>
+					</div>
+					<div class="i-liquidity__range">
+						<div class="i-liquidity__rangebar" style="left: 1%;">
+							<span class="sr">Data Range</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="i-liquidity__group2">
+				<div class="i-liquidity__group2-block1">
+					<div class="i-liquidity__estimate">
+						 Expected earning annual rate is <br><br> <strong>258~580%</strong>
+					</div>
+					<a href="#" class="i-liquidity__start">Liquidity mining</a>
+				</div>
+				<div class="i-liquidity__group2-block2">
+					<ul class="i-liquidity_chart">
+						<li class="i-liquidity_chart-item">
+						<div class="i-liquidity_chart-title">
+							 Liquidity donationn
+						</div>
+						<div class="i-liquidity_chart-data">
+							<strong>0.0000</strong> BNB
+						</div>
+						</li>
+						<li class="i-liquidity_chart-item">
+						<div class="i-liquidity_chart-title">
+							 Completed mining Reward
+						</div>
+						<div class="i-liquidity_chart-data">
+							<strong>0.0000</strong> BNB
+						</div>
+						</li>
+						<li class="i-liquidity_chart-item">
+						<div class="i-liquidity_chart-title">
+							 Expected liquidty mining Reward
+						</div>
+						<div class="i-liquidity_chart-data">
+							<strong>0.0000</strong> BNB
+						</div>
+						</li>
+						<li class="i-liquidity_chart-item">
+						<div class="i-liquidity_chart-title">
+							 Recommended mining Reward 
+						</div>
+						<div class="i-liquidity_chart-data">
+							<strong>0.0000</strong> BNB
+						</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- ----- //3. BNB - BTC ---- -->
+		</div>
+		
+	</div>
+	<!-- ========== //Liquidity  mining ========== -->
+	<!-- ========== Binance Chain ========== -->
+	<div class="i-about" id="3">
+		<div class="i-title">
+			<h3 class="i-title__title">Binance Chain</h3>
+		</div>
+		<div class="i-about__group">
+			<div class="i-about__group1">
+				<img src="/asset/image/index/about_logo.png" alt="" class="i-about_group1-logo"/>
+				<h4 class="i-about__group-title">Binance Smart Chain (BSC)</h4>
+				<div class="i-about__group-text">
+					<p>
+						 A Parallel Binance Chain to Enable Smart Contracts.
+					</p>
+				</div>
+				<div class="i-about__group-btns">
+					<a href="https://bscscan.com" target="_blank" class="i-about__group-btn i-about__group-btn1"><span class="material-icons material-icons-outlined">language</span>Website</a>
+					<a href="https://github.com/binance-chain/whitepaper/blob/master/WHITEPAPER.md" target="_blank" class="i-about__group-btn i-about__group-btn2"><span class="material-icons material-icons-outlined">task</span>White paper</a>
+				</div>
+			</div>
+			<div class="i-about__group2">
+				<h4 class="i-about__group-title">Binance Smart Chain (BSC)</h4>
+				<div class="i-about__group-text">
+					<p>
+						 This dual-chain architecture will empower its users to build their decentralized apps and digital assets on one blockchain and take advantage of the fast trading to exchange on the other.
+					</p>
+				</div>
+			</div>
+			<div class="i-about__group3">
+				<h4 class="i-about__group-title">Binance Chain (BC)</h4>
+				<div class="i-about__group-text">
+					<p>
+						 A fast and secure decentralized digital asset exchange based on the highly performant matching engine built on distributed consensus.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ========== //Binance Chain ========== -->
+	<!-- ========== Ecosystem partners ========== -->
+	<div class="i-partners" id="4">
+		<div class="i-title">
+			<h3 class="i-title__title">Ecosystem partners</h3>
+		</div>
+		<ul class="i-partners__list">
+			<li>
+			<a href="https://www.binance.com/" target="_blank">
+			<img src="/asset/image/index/partners_binance.png" alt=""/>
+			<p>
+				 BINANCE
+			</p>
+			</a>
+			</li>
+			<li>
+			<a href="https://bscscan.com" target="_blank">
+			<img src="/asset/image/index/partners_bsc.png" alt=""/>
+			<p>
+				 BINANCE SMART CHAIN (BSC)
+			</p>
+			</a>
+			</li>
+			<li>
+			<a href="https://www.tokenpocket.pro/" target="_blank">
+			<img src="/asset/image/index/partners_tp.png" alt=""/>
+			<p>
+				 TOKEN POCKET
+			</p>
+			</a>
+			</li>
+			<li>
+			<a href="https://uniswap.org/" target="_blank">
+			<img src="/asset/image/index/partners_uni.png" alt=""/>
+			<p>
+				 UNI SWAP
+			</p>
+			</a>
+			</li>
+			<li>
+			<a href="https://1inch.io/" target="_blank">
+			<img src="/asset/image/index/partners_1inch.png" alt=""/>
+			<p>
+				 1INCH SWAP
+			</p>
+			</a>
+			</li>
+			<li>
+			<a href="https://pancakeswap.finance/" target="_blank">
+			<img src="/asset/image/index/partners_pancake.png" alt=""/>
+			<p>
+				 PANCAKE SWAP
+			</p>
+			</a>
+			</li>
+			<li>
+			<a href="https://dodoex.io/" target="_blank">
+			<img src="/asset/image/index/partners_dodo.png" alt=""/>
+			<p>
+				 DODO SWAP
+			</p>
+			</a>
+			</li>
+			<li>
+			<a href="https://swipe.io/" target="_blank">
+			<img src="/asset/image/index/partners_sxp.png" alt=""/>
+			<p>
+				 SXP SWAP
+			</p>
+			</a>
+			</li>
+			<li>
+			<a href="https://compound.finance/" target="_blank">
+			<img src="/asset/image/index/partners_comp.png" alt=""/>
+			<p>
+				 COMPOUND
+			</p>
+			</a>
+			</li>
+		</ul>
+	</div>
+	<!-- ========== //Ecosystem partners ========== -->
+	<!-- ========== Help center ========== -->
+	<div class="i-help" id="5">
+		<div class="i-title">
+			<h3 class="i-title__title">Help Center</h3>
+		</div>
+		<ul class="i-help__list">
+			<li>
+			<h4 class="i-help__list-title">What is Binance Chain and Binance Smart Chain? <span class="material-icons material-icons-outlined">expand_more</span></h4>
+			<div class="i-help__list-text">
+				<p>
+					<strong><font size="" color="#fff">Binance Smart Chain (BSC)</font></strong><br>
+					<br>
+					 This dual-chain architecture will empower its users to build their decentralized apps and digital assets on one blockchain and take advantage of the fast trading to exchange on the other.
+				</p>
+				<br>
+				<br>
+				<p>
+					<strong><font size="" color="#fff">Highlights:</font></strong><br>
+				</p>
+				<br>
+				<p>
+					 • EVM Compatible<br>
+				</p>
+				<br>
+				<p>
+					 • <a href="https://docs.binance.org/smart-chain/validator/guideline.html" target="_blank"><u><font size="" color="#878d9c">Proof of Staked Authority</font></u></a><br>
+				</p>
+				<br>
+				<p>
+					 • <a href="https://docs.binance.org/smart-chain/guides/concepts/cross-chain.html" target="_blank"><u><font size="" color="#878d9c">Cross-Chain Transfer</font></u></a><br>
+				</p>
+				<br>
+				<p>
+					 • Block time ~3 seconds<br>
+				</p>
+			</div>
+			</li>
+			<li>
+			<h4 class="i-help__list-title">Binance Chain Wallet What is it?<span class="material-icons material-icons-outlined">expand_more</span></h4>
+			<div class="i-help__list-text">
+				<p>
+					 Binance Chain Extension Wallet is a Crypto Wallet for Binance Chain, Binance Smart Chain. You can send and receive funds on Binance Chain, Binance Smart Chain and cross-chain transfers between both of Binance’s blockchains.
+				</p>
+				<br>
+				<p>
+					 Lately, Binance Chain Extension Wallet add support for Ethereum blockchain. It could enable access for distributed applications, or "Dapps" in your browser!
+				</p>
+			</div>
+			</li>
+			<li>
+			<h4 class="i-help__list-title">What is the BNB Reward Program?<span class="material-icons material-icons-outlined">expand_more</span></h4>
+			<div class="i-help__list-text">
+				<p>
+					 The BNB Rewards Program for Binance Smart Chain rewards liquidity pledges with an Expected annual return of 168-580%.
+				</p>
+				<br>
+				<p>
+					 • Completed mining Reward ( 10% of mining amount)<br>
+				</p>
+				<br>
+				<p>
+					 • Expected liquidty mining Reward ( From the next day)<br>
+				</p>
+				<br>
+				<p>
+					 • Recommended mining Reward (1 Step 2% , 2 Step 1%)<br>
+				</p>
+			</div>
+			</li>
+		</ul>
+	</div>
+	<!-- ========== //Help center ========== -->
+</div>
+</main>
+<!-- ####################################  footer  #################################### -->
+<footer class="footer">
+<div class="wrap">
+	<div class="footer__group1">
+		<div class="footer__copyright">
+			<br>
+			<p class="footer__copyrighttext1">
+				 &copy; 2021 All Rights Reserved
+			</p>
+			<p class="footer__copyrighttext2">
+				<a href="Bsclp Community.pdf" target="_blank">Disclaimer</a>
+			</p>
+		</div>
+		<div class="footer__sitelink">
+			<a href="https://t.me/solidityContractDevelop/" target="_blank"><img src="/asset/image/common/Telegram.png" width="45" alt=""/></a><span class="sr">Telegram</span></a>
+			&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://fast.wistia.net/embed/iframe/0phy1tsrgz?videoFoam=true" target="_blank"><img src="/asset/image/common/Youtube.png" width="45" alt=""/></a><span class="sr">Youtube</span></a>
+		</div>
+	</div>
+	<div class="footer__group2">
+		<div class="footer_countbar footer_countbar--side1">
+			 Total transaction <span class="count"><strong class="total">0.0000</strong> BNB</span>
+		</div>
+		<div class="footer_countbar footer_countbar--side2">
+			 All participants <span class="count"><strong class="totalPeople">0</strong></span>
+		</div>
+		<div class="footer_countbar footer_countbar--side3">
+			 Total number of transactions <span class="count"><strong class="totalNum">0</strong></span><br>
+			<br>
+		</div>
+	</div>
+</div>
+</footer>
+<a href="https://t.me/solidityContractDevelop/" target="_blank" class="sidebtn"><img src="/asset/image/common/sider.png" alt="SIDE BUTTON"/></a>
+<!-- ####################################  //footer  #################################### -->
+<script src="./asset/js/jquery.min.js"></script>
+<script src="./asset/js/clipboard.min.js"></script>
+<script src="./asset/js/layer.js"></script>
+<script src="./asset/js/common.js"></script>
+<script src="./asset/js/web3.min.js"></script>
+<script src="./asset/js/bignumber.min.js"></script>
+<script src="./asset/js/dapp.js"></script>
+<script src="./asset/js/index.js"></script>
+</body>
+</html>
